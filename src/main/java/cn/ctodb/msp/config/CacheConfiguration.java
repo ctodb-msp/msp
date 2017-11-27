@@ -43,6 +43,10 @@ public class CacheConfiguration {
             cm.createCache(cn.ctodb.msp.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(cn.ctodb.msp.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(cn.ctodb.msp.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(cn.ctodb.msp.domain.AppGroup.class.getName(), jcacheConfiguration);
+            cm.createCache(cn.ctodb.msp.domain.AppGroup.class.getName() + ".children", jcacheConfiguration);
+            cm.createCache(cn.ctodb.msp.domain.AppApps.class.getName(), jcacheConfiguration);
+            cm.createCache(cn.ctodb.msp.domain.AppMenu.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

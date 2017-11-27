@@ -1,0 +1,9 @@
+{
+    "mspApp": {
+        "AppType" : {
+            "null": "",
+            "APP": "APP",
+            "WEDGET": "WEDGET"
+        }
+    }
+}

@@ -1,0 +1,102 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAppGroupLabel" jhiTranslate="mspApp.appGroup.home.createOrEditLabel">Create or edit a App Group</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!appGroup.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="appGroup.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="appGroup.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.sort" for="field_sort">Sort</label>
+            <input type="number" class="form-control" name="sort" id="field_sort"
+                [(ngModel)]="appGroup.sort"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.icon1" for="field_icon1">Icon 1</label>
+            <input type="text" class="form-control" name="icon1" id="field_icon1"
+                [(ngModel)]="appGroup.icon1"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.icon2" for="field_icon2">Icon 2</label>
+            <input type="text" class="form-control" name="icon2" id="field_icon2"
+                [(ngModel)]="appGroup.icon2"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.icon3" for="field_icon3">Icon 3</label>
+            <input type="text" class="form-control" name="icon3" id="field_icon3"
+                [(ngModel)]="appGroup.icon3"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def1" for="field_def1">Def 1</label>
+            <input type="text" class="form-control" name="def1" id="field_def1"
+                [(ngModel)]="appGroup.def1"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def2" for="field_def2">Def 2</label>
+            <input type="text" class="form-control" name="def2" id="field_def2"
+                [(ngModel)]="appGroup.def2"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def3" for="field_def3">Def 3</label>
+            <input type="text" class="form-control" name="def3" id="field_def3"
+                [(ngModel)]="appGroup.def3"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def4" for="field_def4">Def 4</label>
+            <input type="text" class="form-control" name="def4" id="field_def4"
+                [(ngModel)]="appGroup.def4"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def5" for="field_def5">Def 5</label>
+            <input type="text" class="form-control" name="def5" id="field_def5"
+                [(ngModel)]="appGroup.def5"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def6" for="field_def6">Def 6</label>
+            <input type="text" class="form-control" name="def6" id="field_def6"
+                [(ngModel)]="appGroup.def6"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def7" for="field_def7">Def 7</label>
+            <input type="text" class="form-control" name="def7" id="field_def7"
+                [(ngModel)]="appGroup.def7"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def8" for="field_def8">Def 8</label>
+            <input type="text" class="form-control" name="def8" id="field_def8"
+                [(ngModel)]="appGroup.def8"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.def9" for="field_def9">Def 9</label>
+            <input type="text" class="form-control" name="def9" id="field_def9"
+                [(ngModel)]="appGroup.def9"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appGroup.parent" for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="appGroup.parentId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="appGroupOption.id" *ngFor="let appGroupOption of appgroups; trackBy: trackAppGroupById">{{appGroupOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

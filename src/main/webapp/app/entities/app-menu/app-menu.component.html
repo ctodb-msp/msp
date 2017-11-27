@@ -1,0 +1,97 @@
+<div>
+    <h2>
+        <span jhiTranslate="mspApp.appMenu.home.title">App Menus</span>
+        <button class="btn btn-primary float-right jh-create-entity create-app-menu" [routerLink]="['/', { outlets: { popup: ['app-menu-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="mspApp.appMenu.home.createLabel">
+            Create new App Menu
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'mspApp.appMenu.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="appMenus">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="mspApp.appMenu.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="mspApp.appMenu.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reqMode"><span jhiTranslate="mspApp.appMenu.reqMode">Req Mode</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reqAddr"><span jhiTranslate="mspApp.appMenu.reqAddr">Req Addr</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="appLevel"><span jhiTranslate="mspApp.appMenu.appLevel">App Level</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sort"><span jhiTranslate="mspApp.appMenu.sort">Sort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="icon1"><span jhiTranslate="mspApp.appMenu.icon1">Icon 1</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="mspApp.appMenu.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="appId"><span jhiTranslate="mspApp.appMenu.app">App</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let appMenu of appMenus ;trackBy: trackId">
+                <td><a [routerLink]="['../app-menu', appMenu.id ]">{{appMenu.id}}</a></td>
+                <td>{{appMenu.code}}</td>
+                <td>{{appMenu.name}}</td>
+                <td jhiTranslate="{{'mspApp.ReqMode.' + appMenu.reqMode}}">{{appMenu.reqMode}}</td>
+                <td>{{appMenu.reqAddr}}</td>
+                <td jhiTranslate="{{'mspApp.AppLevel.' + appMenu.appLevel}}">{{appMenu.appLevel}}</td>
+                <td>{{appMenu.sort}}</td>
+                <td>{{appMenu.icon1}}</td>
+                <td>{{appMenu.status}}</td>
+                <td>
+                    <div *ngIf="appMenu.appId">
+                        <a [routerLink]="['../app-apps', appMenu.appId  ]" >{{appMenu.appId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../app-menu', appMenu.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'app-menu/'+ appMenu.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'app-menu/'+ appMenu.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="appMenus && appMenus.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

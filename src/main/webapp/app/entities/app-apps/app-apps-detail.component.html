@@ -1,0 +1,125 @@
+
+<div *ngIf="appApps">
+    <h2><span jhiTranslate="mspApp.appApps.detail.title">App Apps</span> {{appApps.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="mspApp.appApps.code">Code</span></dt>
+        <dd>
+            <span>{{appApps.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.name">Name</span></dt>
+        <dd>
+            <span>{{appApps.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.version">Version</span></dt>
+        <dd>
+            <span>{{appApps.version}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.appDesc">App Desc</span></dt>
+        <dd>
+            <span>{{appApps.appDesc}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.appType">App Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'mspApp.AppType.' + appApps.appType}}">{{appApps.appType}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.reqMode">Req Mode</span></dt>
+        <dd>
+            <span jhiTranslate="{{'mspApp.ReqMode.' + appApps.reqMode}}">{{appApps.reqMode}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.reqAddr">Req Addr</span></dt>
+        <dd>
+            <span>{{appApps.reqAddr}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.appLevel">App Level</span></dt>
+        <dd>
+            <span jhiTranslate="{{'mspApp.AppLevel.' + appApps.appLevel}}">{{appApps.appLevel}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.platform">Platform</span></dt>
+        <dd>
+            <span jhiTranslate="{{'mspApp.AppPlatForm.' + appApps.platform}}">{{appApps.platform}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.sort">Sort</span></dt>
+        <dd>
+            <span>{{appApps.sort}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.icon1">Icon 1</span></dt>
+        <dd>
+            <span>{{appApps.icon1}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.icon2">Icon 2</span></dt>
+        <dd>
+            <span>{{appApps.icon2}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.icon3">Icon 3</span></dt>
+        <dd>
+            <span>{{appApps.icon3}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def1">Def 1</span></dt>
+        <dd>
+            <span>{{appApps.def1}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def2">Def 2</span></dt>
+        <dd>
+            <span>{{appApps.def2}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def3">Def 3</span></dt>
+        <dd>
+            <span>{{appApps.def3}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def4">Def 4</span></dt>
+        <dd>
+            <span>{{appApps.def4}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def5">Def 5</span></dt>
+        <dd>
+            <span>{{appApps.def5}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def6">Def 6</span></dt>
+        <dd>
+            <span>{{appApps.def6}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def7">Def 7</span></dt>
+        <dd>
+            <span>{{appApps.def7}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def8">Def 8</span></dt>
+        <dd>
+            <span>{{appApps.def8}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.def9">Def 9</span></dt>
+        <dd>
+            <span>{{appApps.def9}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.status">Status</span></dt>
+        <dd>
+            <span>{{appApps.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.menu">Menu</span></dt>
+        <dd>
+            <div *ngIf="appApps.menuId">
+                <a [routerLink]="['/app-menu', appApps.menuId]">{{appApps.menuId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appApps.group">Group</span></dt>
+        <dd>
+            <div *ngIf="appApps.groupId">
+                <a [routerLink]="['/app-group', appApps.groupId]">{{appApps.groupId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'app-apps/'+ appApps.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

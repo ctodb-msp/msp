@@ -1,0 +1,89 @@
+
+DEFAULT_MAX_BYTES = 40
+
+entity AppGroup {
+	name String,
+    sort Integer,
+    icon1 String,
+    icon2 String,
+    icon3 String,
+    def1 String,
+    def2 String,
+    def3 String,
+    def4 String,
+    def5 String,
+    def6 String,
+    def7 String,
+    def8 String,
+    def9 String
+}
+
+entity AppApps {
+    code String,
+	name String,
+    version Integer,
+    appDesc String,
+    appType  AppType,
+    reqMode ReqMode,
+    reqAddr String,
+    appLevel AppLevel,
+    platform AppPlatForm,
+    sort Integer,
+    icon1 String,
+    icon2 String,
+    icon3 String,
+    def1 String,
+    def2 String,
+    def3 String,
+    def4 String,
+    def5 String,
+    def6 String,
+    def7 String,
+    def8 String,
+    def9 String,
+    status String
+}
+
+entity AppMenu {
+    code String,
+	name String,
+    reqMode ReqMode,
+    reqAddr String,
+    appLevel AppLevel,
+    sort Integer,
+    icon1 String,
+    status String
+}
+
+enum AppLevel {
+	SYS, USER
+}
+
+enum ReqMode {
+    URL
+}
+
+enum AppType {
+    APP, WEDGET
+}
+
+enum AppPlatForm{
+	WEB, APP
+}
+
+relationship OneToOne{
+    AppApps{menu} to AppMenu
+}
+
+relationship ManyToOne{
+    AppMenu{app} to AppApps,
+	AppApps{group} to AppGroup,
+    AppGroup{parent} to AppGroup{child}
+}
+
+paginate * with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
+//yo jhipster:import-jdl jhipster.jh

@@ -1,0 +1,9 @@
+{
+    "mspApp": {
+        "AppPlatForm" : {
+            "null": "",
+            "WEB": "WEB",
+            "APP": "APP"
+        }
+    }
+}

@@ -1,0 +1,59 @@
+
+<div *ngIf="appMenu">
+    <h2><span jhiTranslate="mspApp.appMenu.detail.title">App Menu</span> {{appMenu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="mspApp.appMenu.code">Code</span></dt>
+        <dd>
+            <span>{{appMenu.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.name">Name</span></dt>
+        <dd>
+            <span>{{appMenu.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.reqMode">Req Mode</span></dt>
+        <dd>
+            <span jhiTranslate="{{'mspApp.ReqMode.' + appMenu.reqMode}}">{{appMenu.reqMode}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.reqAddr">Req Addr</span></dt>
+        <dd>
+            <span>{{appMenu.reqAddr}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.appLevel">App Level</span></dt>
+        <dd>
+            <span jhiTranslate="{{'mspApp.AppLevel.' + appMenu.appLevel}}">{{appMenu.appLevel}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.sort">Sort</span></dt>
+        <dd>
+            <span>{{appMenu.sort}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.icon1">Icon 1</span></dt>
+        <dd>
+            <span>{{appMenu.icon1}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.status">Status</span></dt>
+        <dd>
+            <span>{{appMenu.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appMenu.app">App</span></dt>
+        <dd>
+            <div *ngIf="appMenu.appId">
+                <a [routerLink]="['/app-apps', appMenu.appId]">{{appMenu.appId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'app-menu/'+ appMenu.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,133 @@
+<div>
+    <h2>
+        <span jhiTranslate="mspApp.appApps.home.title">App Apps</span>
+        <button class="btn btn-primary float-right jh-create-entity create-app-apps" [routerLink]="['/', { outlets: { popup: ['app-apps-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="mspApp.appApps.home.createLabel">
+            Create new App Apps
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'mspApp.appApps.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="appApps">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="mspApp.appApps.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="mspApp.appApps.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="version"><span jhiTranslate="mspApp.appApps.version">Version</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="appDesc"><span jhiTranslate="mspApp.appApps.appDesc">App Desc</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="appType"><span jhiTranslate="mspApp.appApps.appType">App Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reqMode"><span jhiTranslate="mspApp.appApps.reqMode">Req Mode</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reqAddr"><span jhiTranslate="mspApp.appApps.reqAddr">Req Addr</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="appLevel"><span jhiTranslate="mspApp.appApps.appLevel">App Level</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="platform"><span jhiTranslate="mspApp.appApps.platform">Platform</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sort"><span jhiTranslate="mspApp.appApps.sort">Sort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="icon1"><span jhiTranslate="mspApp.appApps.icon1">Icon 1</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="icon2"><span jhiTranslate="mspApp.appApps.icon2">Icon 2</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="icon3"><span jhiTranslate="mspApp.appApps.icon3">Icon 3</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def1"><span jhiTranslate="mspApp.appApps.def1">Def 1</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def2"><span jhiTranslate="mspApp.appApps.def2">Def 2</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def3"><span jhiTranslate="mspApp.appApps.def3">Def 3</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def4"><span jhiTranslate="mspApp.appApps.def4">Def 4</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def5"><span jhiTranslate="mspApp.appApps.def5">Def 5</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def6"><span jhiTranslate="mspApp.appApps.def6">Def 6</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def7"><span jhiTranslate="mspApp.appApps.def7">Def 7</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def8"><span jhiTranslate="mspApp.appApps.def8">Def 8</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="def9"><span jhiTranslate="mspApp.appApps.def9">Def 9</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="mspApp.appApps.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="menuId"><span jhiTranslate="mspApp.appApps.menu">Menu</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupId"><span jhiTranslate="mspApp.appApps.group">Group</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let appApps of appApps ;trackBy: trackId">
+                <td><a [routerLink]="['../app-apps', appApps.id ]">{{appApps.id}}</a></td>
+                <td>{{appApps.code}}</td>
+                <td>{{appApps.name}}</td>
+                <td>{{appApps.version}}</td>
+                <td>{{appApps.appDesc}}</td>
+                <td jhiTranslate="{{'mspApp.AppType.' + appApps.appType}}">{{appApps.appType}}</td>
+                <td jhiTranslate="{{'mspApp.ReqMode.' + appApps.reqMode}}">{{appApps.reqMode}}</td>
+                <td>{{appApps.reqAddr}}</td>
+                <td jhiTranslate="{{'mspApp.AppLevel.' + appApps.appLevel}}">{{appApps.appLevel}}</td>
+                <td jhiTranslate="{{'mspApp.AppPlatForm.' + appApps.platform}}">{{appApps.platform}}</td>
+                <td>{{appApps.sort}}</td>
+                <td>{{appApps.icon1}}</td>
+                <td>{{appApps.icon2}}</td>
+                <td>{{appApps.icon3}}</td>
+                <td>{{appApps.def1}}</td>
+                <td>{{appApps.def2}}</td>
+                <td>{{appApps.def3}}</td>
+                <td>{{appApps.def4}}</td>
+                <td>{{appApps.def5}}</td>
+                <td>{{appApps.def6}}</td>
+                <td>{{appApps.def7}}</td>
+                <td>{{appApps.def8}}</td>
+                <td>{{appApps.def9}}</td>
+                <td>{{appApps.status}}</td>
+                <td>
+                    <div *ngIf="appApps.menuId">
+                        <a [routerLink]="['../app-menu', appApps.menuId  ]" >{{appApps.menuId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="appApps.groupId">
+                        <a [routerLink]="['../app-group', appApps.groupId  ]" >{{appApps.groupId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../app-apps', appApps.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'app-apps/'+ appApps.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'app-apps/'+ appApps.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="appApps && appApps.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

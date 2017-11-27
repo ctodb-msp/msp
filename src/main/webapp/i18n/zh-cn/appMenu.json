@@ -1,0 +1,30 @@
+{
+    "mspApp": {
+        "appMenu" : {
+            "home": {
+                "title": "App Menus",
+                "createLabel": "创建新 App Menu",
+                "createOrEditLabel": "创建或编辑 App Menu",
+                "search": "查找 App Menu"
+            },
+            "created": "App Menu {{ param }} 创建成功",
+            "updated": "App Menu {{ param }} 更新成功",
+            "deleted": "App Menu {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 App Menu {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "App Menu"
+            },
+            "code": "Code",
+            "name": "Name",
+            "reqMode": "Req Mode",
+            "reqAddr": "Req Addr",
+            "appLevel": "App Level",
+            "sort": "Sort",
+            "icon1": "Icon 1",
+            "status": "Status",
+            "app": "App"
+        }
+    }
+}

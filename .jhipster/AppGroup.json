@@ -1,0 +1,81 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parent",
+            "otherEntityName": "appGroup",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "child",
+            "otherEntityName": "appGroup",
+            "otherEntityRelationshipName": "parent"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sort",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "icon1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "icon2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "icon3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def4",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def5",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def6",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def7",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def8",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "def9",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171127111736",
+    "entityTableName": "app_group",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

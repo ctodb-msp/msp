@@ -1,0 +1,75 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAppMenuLabel" jhiTranslate="mspApp.appMenu.home.createOrEditLabel">Create or edit a App Menu</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!appMenu.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="appMenu.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="appMenu.code"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="appMenu.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.reqMode" for="field_reqMode">Req Mode</label>
+            <select class="form-control" name="reqMode" [(ngModel)]="appMenu.reqMode" id="field_reqMode" >
+                <option value="URL">{{'mspApp.ReqMode.URL' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.reqAddr" for="field_reqAddr">Req Addr</label>
+            <input type="text" class="form-control" name="reqAddr" id="field_reqAddr"
+                [(ngModel)]="appMenu.reqAddr"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.appLevel" for="field_appLevel">App Level</label>
+            <select class="form-control" name="appLevel" [(ngModel)]="appMenu.appLevel" id="field_appLevel" >
+                <option value="SYS">{{'mspApp.AppLevel.SYS' | translate}}</option>
+                <option value="USER">{{'mspApp.AppLevel.USER' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.sort" for="field_sort">Sort</label>
+            <input type="number" class="form-control" name="sort" id="field_sort"
+                [(ngModel)]="appMenu.sort"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.icon1" for="field_icon1">Icon 1</label>
+            <input type="text" class="form-control" name="icon1" id="field_icon1"
+                [(ngModel)]="appMenu.icon1"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                [(ngModel)]="appMenu.status"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mspApp.appMenu.app" for="field_app">App</label>
+            <select class="form-control" id="field_app" name="app" [(ngModel)]="appMenu.appId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="appAppsOption.id" *ngFor="let appAppsOption of appapps; trackBy: trackAppAppsById">{{appAppsOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

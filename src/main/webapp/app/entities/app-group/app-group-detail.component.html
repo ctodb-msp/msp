@@ -1,0 +1,83 @@
+
+<div *ngIf="appGroup">
+    <h2><span jhiTranslate="mspApp.appGroup.detail.title">App Group</span> {{appGroup.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="mspApp.appGroup.name">Name</span></dt>
+        <dd>
+            <span>{{appGroup.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.sort">Sort</span></dt>
+        <dd>
+            <span>{{appGroup.sort}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.icon1">Icon 1</span></dt>
+        <dd>
+            <span>{{appGroup.icon1}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.icon2">Icon 2</span></dt>
+        <dd>
+            <span>{{appGroup.icon2}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.icon3">Icon 3</span></dt>
+        <dd>
+            <span>{{appGroup.icon3}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def1">Def 1</span></dt>
+        <dd>
+            <span>{{appGroup.def1}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def2">Def 2</span></dt>
+        <dd>
+            <span>{{appGroup.def2}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def3">Def 3</span></dt>
+        <dd>
+            <span>{{appGroup.def3}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def4">Def 4</span></dt>
+        <dd>
+            <span>{{appGroup.def4}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def5">Def 5</span></dt>
+        <dd>
+            <span>{{appGroup.def5}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def6">Def 6</span></dt>
+        <dd>
+            <span>{{appGroup.def6}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def7">Def 7</span></dt>
+        <dd>
+            <span>{{appGroup.def7}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def8">Def 8</span></dt>
+        <dd>
+            <span>{{appGroup.def8}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.def9">Def 9</span></dt>
+        <dd>
+            <span>{{appGroup.def9}}</span>
+        </dd>
+        <dt><span jhiTranslate="mspApp.appGroup.parent">Parent</span></dt>
+        <dd>
+            <div *ngIf="appGroup.parentId">
+                <a [routerLink]="['/app-group', appGroup.parentId]">{{appGroup.parentId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'app-group/'+ appGroup.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

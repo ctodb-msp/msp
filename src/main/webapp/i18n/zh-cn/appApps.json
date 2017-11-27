@@ -1,0 +1,46 @@
+{
+    "mspApp": {
+        "appApps" : {
+            "home": {
+                "title": "App Apps",
+                "createLabel": "创建新 App Apps",
+                "createOrEditLabel": "创建或编辑 App Apps",
+                "search": "查找 App Apps"
+            },
+            "created": "App Apps {{ param }} 创建成功",
+            "updated": "App Apps {{ param }} 更新成功",
+            "deleted": "App Apps {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 App Apps {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "App Apps"
+            },
+            "code": "Code",
+            "name": "Name",
+            "version": "Version",
+            "appDesc": "App Desc",
+            "appType": "App Type",
+            "reqMode": "Req Mode",
+            "reqAddr": "Req Addr",
+            "appLevel": "App Level",
+            "platform": "Platform",
+            "sort": "Sort",
+            "icon1": "Icon 1",
+            "icon2": "Icon 2",
+            "icon3": "Icon 3",
+            "def1": "Def 1",
+            "def2": "Def 2",
+            "def3": "Def 3",
+            "def4": "Def 4",
+            "def5": "Def 5",
+            "def6": "Def 6",
+            "def7": "Def 7",
+            "def8": "Def 8",
+            "def9": "Def 9",
+            "status": "Status",
+            "menu": "Menu",
+            "group": "Group"
+        }
+    }
+}

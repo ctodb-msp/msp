@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "app",
+            "otherEntityName": "appApps",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "reqMode",
+            "fieldType": "ReqMode",
+            "fieldValues": "URL"
+        },
+        {
+            "fieldName": "reqAddr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appLevel",
+            "fieldType": "AppLevel",
+            "fieldValues": "SYS,USER"
+        },
+        {
+            "fieldName": "sort",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "icon1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171127111738",
+    "entityTableName": "app_menu",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}
